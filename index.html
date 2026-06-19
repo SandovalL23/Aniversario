@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>365 Días Contigo ❤️</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+            rel="stylesheet">
+
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                background: linear-gradient(135deg, #fff5f7, #ffeef4);
+                color: #333;
+            }
+
+            .welcome-screen {
+                height: 100vh;
+                background:
+                    linear-gradient(rgba(0, 0, 0, .55),
+                        rgba(0, 0, 0, .75)),
+                    url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=2000');
+
+                background-size: cover;
+                background-position: center;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .welcome-content {
+                color: white;
+            }
+
+            .welcome-content h1 {
+                font-size: 5rem;
+            }
+
+            .welcome-content h2 {
+                font-size: 3rem;
+                margin-bottom: 20px;
+            }
+
+            .welcome-content button {
+                margin-top: 30px;
+                border: none;
+                background: #d63384;
+                color: white;
+                padding: 18px 40px;
+                border-radius: 50px;
+                cursor: pointer;
+                font-size: 1.1rem;
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, .92);
+                z-index: 9999;
+                overflow-y: auto;
+            }
+
+            .modal-content {
+                position: relative;
+                width: 100%;
+                min-height: 100vh;
+            }
+
+            .close {
+                position: fixed;
+                top: 20px;
+                right: 30px;
+                color: white;
+                font-size: 40px;
+                cursor: pointer;
+                z-index: 10000;
+            }
+
+            .hero {
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .card {
+                max-width: 1000px;
+                width: 100%;
+                background: #fff;
+                padding: 50px;
+                border-radius: 30px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, .12);
+            }
+
+            .heart {
+                font-size: 80px;
+                animation: pulse 1.5s infinite;
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.1);
+                }
+
+                100% {
+                    transform: scale(1);
+                }
+            }
+
+            h1 {
+                color: #d63384;
+                font-size: 3rem;
+                margin-top: 15px;
+            }
+
+            .subtitle {
+                color: #777;
+                margin-top: 10px;
+                margin-bottom: 30px;
+                font-size: 1.1rem;
+            }
+
+            /* CARRUSEL */
+
+            .carousel-container {
+                position: relative;
+                margin: 30px auto;
+                width: 100%;
+                overflow: hidden;
+                border-radius: 20px;
+            }
+
+            .carousel-container img {
+                width: 100%;
+                height: 500px;
+                object-fit: cover;
+                border-radius: 20px;
+                transition: opacity .5s ease;
+            }
+
+            .indicators {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #ccc;
+                cursor: pointer;
+            }
+
+            .dot.active {
+                background: #d63384;
+            }
+
+            .message {
+                margin-top: 40px;
+                line-height: 1.9;
+                font-size: 1.1rem;
+                color: #555;
+            }
+
+            .btn {
+                margin-top: 40px;
+                border: none;
+                background: #d63384;
+                color: white;
+                padding: 16px 35px;
+                border-radius: 50px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: .3s;
+            }
+
+            .btn:hover {
+                transform: translateY(-3px);
+                background: #be1e6d;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .surprise {
+                margin-top: 40px;
+                padding: 30px;
+                background: #fff0f7;
+                border: 2px dashed #d63384;
+                border-radius: 20px;
+            }
+
+            .surprise h2 {
+                color: #d63384;
+                margin-bottom: 15px;
+            }
+
+            .location {
+                margin-top: 15px;
+                font-size: 1.3rem;
+                font-weight: 600;
+            }
+
+            .envelope {
+                margin-top: 20px;
+                font-size: 1.2rem;
+            }
+
+            .footer {
+                margin-top: 40px;
+                color: #777;
+                font-style: italic;
+            }
+
+            @media(max-width:768px) {
+
+                .card {
+                    padding: 25px;
+                }
+
+                h1 {
+                    font-size: 2.2rem;
+                }
+
+                .carousel-container img {
+                    height: 300px;
+                }
+
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="welcome-screen">
+
+            <div class="welcome-content">
+
+                <h1>❤️</h1>
+
+                <h2>Hola Mi Amor</h2>
+
+                <p>
+                    He preparado algo muy especial para ti...
+                </p>
+
+                <button onclick="abrirModal()">
+                    Abrir Sorpresa 💌
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="modalAniversario" class="modal">
+
+            <div class="modal-content">
+
+                <span class="close" onclick="cerrarModal()">
+                    ×
+                </span>
+
+                <section class="hero">
+
+                    <div class="card">
+
+                        <div class="heart">❤️</div>
+
+                        <h1>365 Días Contigo</h1>
+
+                        <p class="subtitle">
+                            Un año lleno de amor, aventuras y recuerdos inolvidables.
+                        </p>
+
+                        <!-- CARRUSEL -->
+
+                        <div class="carousel-container">
+                            <img id="slide"
+                                src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1600"
+                                alt="Nosotros">
+                        </div>
+
+                        <div class="indicators">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+
+                        <div class="message">
+                            Hace exactamente un año comenzó una historia que cambió mi vida.
+
+                            Durante estos 365 días hemos compartido momentos hermosos,
+                            risas, sueños, aventuras y recuerdos que llevaré siempre conmigo mi amor.
+
+                            Hoy quiero agradecerte por cada instante, por cada abrazo,
+                            por cada palabra de apoyo y por hacer que cada día sea especial.
+
+                            Gracias por estar siempre para mi cuando te necesito y disculpame por esos malos momento que
+                            te he
+                            hecho pasar
+                            te prometi ser cambiar, y eso hare, te dare mi mejor version porque te mereces eso y mucho
+                            mas mi
+                            vida,
+                            difruta la gran sorpresa que te tengo para ti mi vida. TE
+                            AMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO❤️
+
+                            Pero esta celebración aún no termina... </div>
+
+                        <button class="btn" onclick="mostrarSorpresa()">
+                            🎁 Descubrir Sorpresa
+                        </button>
+
+                        <div id="sorpresa" class="hidden">
+
+                            <div class="surprise">
+
+                                <h2>Tu siguiente misión 💌</h2>
+
+                                <p>
+                                    Quiero que vayas al lugar indicado.
+                                </p>
+
+                                <div class="location">
+                                    📍 VE A TU MOCHILITA Y ABRELA
+                                </div>
+
+                                <p style="margin-top:20px">
+                                    Allí te espera la siguiente parte de esta historia.
+                                </p>
+
+                                <div class="envelope">
+                                    ✉️ Cuando llegues, abre el sobre. <br /> Sin lloradas plissssss.... <br />
+                                    jajajajajajaj
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="footer">
+                            Gracias por este primer año juntos. ❤️<br /><br />
+
+                            PDTA: disculpa por no poderte dar tu regalito el dia que cumplimos año, pero creeme que es
+                            con mucho
+                            amor!..
+                            Recuerda que el que persevera alcansa JAJAJAJA
+                            TE AMO AMOR DE MI VIDA❤️.
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+
+        <script>
+
+            const fotos = [
+
+                'fotos/Image (1).jpg',
+                'fotos/Image (10).jpg',
+                'fotos/Image (11).jpg',
+                'fotos/Image (12).jpg',
+                'fotos/Image (13).jpg',
+                'fotos/Image (14).jpg',
+                'fotos/Image (15).jpg',
+
+            ];
+
+            let actual = 0;
+
+            const slide = document.getElementById('slide');
+            const dots = document.querySelectorAll('.dot');
+
+            function cambiarFoto(index) {
+
+                actual = index;
+
+                slide.src = fotos[index];
+
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    cambiarFoto(index);
+                });
+            });
+
+            setInterval(() => {
+
+                actual++;
+
+                if (actual >= fotos.length) {
+                    actual = 0;
+                }
+
+                cambiarFoto(actual);
+
+            }, 4000);
+
+            function mostrarSorpresa() {
+
+                document.getElementById('sorpresa')
+                    .classList.remove('hidden');
+
+                document.getElementById('sorpresa')
+                    .scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+            }
+
+            function abrirModal() {
+
+                document.getElementById("modalAniversario")
+                    .style.display = "block";
+
+                document.body.style.overflow = "hidden";
+            }
+
+            function cerrarModal() {
+
+                document.getElementById("modalAniversario")
+                    .style.display = "none";
+
+                document.body.style.overflow = "auto";
+            }
+
+        </script>
+
+    </body>
+
+    </html>
+</body>
+
+</html>
